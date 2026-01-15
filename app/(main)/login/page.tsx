@@ -122,9 +122,18 @@
         );
 
         const currentUser = res.data;
+        const old = JSON.parse(localStorage.getItem('currentUser') || '{}');
 
-        // Lưu localStorage
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        localStorage.setItem(
+          'currentUser',
+          JSON.stringify({
+            ...old,
+            ...currentUser, // chỉ ghi đè auth_id, role
+          })
+        );
+
+        alert(`${localStorage.getItem('currentUser')}`)
+      
         console.log("Saved user:", localStorage.getItem('currentUser'));
 
         // Redirect sang /user
