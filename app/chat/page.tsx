@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-const API_URL = process.env.BACKEND_URL;
-const WS_URL = `${process.env.BACKEND_URL}/ws-chat`;
+const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+const WS_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/ws-chat`;
 
 interface User {
   userId: number;

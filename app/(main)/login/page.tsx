@@ -16,7 +16,7 @@
   }
 
   function Login() {
-    const API_URL = process.env.BACKEND_URL;
+    const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
     const router = useRouter();
     const [formData, setFormData] = useState<FormData>({
       username: '',
@@ -96,9 +96,10 @@
         const { credential } = response;
         if (!credential) return;
 
+        console.log(`${API_URL}/auth/login-google`)
         // Gọi backend
         const res = await axios.post(
-          `${API_URL}/login-google`,
+          `${API_URL}/auth/login-google`,
           {
             tokenFromGoogle: credential,
           },
