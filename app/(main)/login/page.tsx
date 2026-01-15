@@ -16,7 +16,7 @@
   }
 
   function Login() {
-    const API_URL = 'https://accompanied-recommended-networks-drops.trycloudflare.com';
+    const API_URL = process.env.BACKEND_URL;
     const router = useRouter();
     const [formData, setFormData] = useState<FormData>({
       username: '',
