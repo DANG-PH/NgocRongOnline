@@ -3,8 +3,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
-const WS_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/ws-chat`;
+const raw = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+if (!raw) {
+  throw new Error('BACKEND_URL is not defined');
+}
+
+const BACKEND_URL = raw.startsWith('http')
+  ? raw
+  : `https://${raw}`;
+
+
+const API_URL = `${BACKEND_URL}`;
+const WS_URL = `${BACKEND_URL}/ws-chat`;
 
 interface User {
   userId: number;

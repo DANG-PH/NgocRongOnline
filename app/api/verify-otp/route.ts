@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BACKEND_URL = process.env.BACKEND_URL || 'https://accompanied-recommended-networks-drops.trycloudflare.com';
+const raw = process.env.BACKEND_URL;
+
+if (!raw) {
+  throw new Error('BACKEND_URL is not defined');
+}
+
+const BACKEND_URL = raw.startsWith('http')
+  ? raw
+  : `https://${raw}`;
 
 export async function POST(request: NextRequest) {
   try {

@@ -16,7 +16,18 @@
   }
 
   function Login() {
-    const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}`;
+    const raw = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+    if (!raw) {
+      throw new Error('BACKEND_URL is not defined');
+    }
+
+    const BACKEND_URL = raw.startsWith('http')
+      ? raw
+      : `https://${raw}`;
+
+
+    const API_URL = `${BACKEND_URL}`;
     const router = useRouter();
     const [formData, setFormData] = useState<FormData>({
       username: '',
