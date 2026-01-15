@@ -16,6 +16,7 @@
   }
 
   function Login() {
+    const API_URL = 'https://accompanied-recommended-networks-drops.trycloudflare.com';
     const router = useRouter();
     const [formData, setFormData] = useState<FormData>({
       username: '',
@@ -97,7 +98,7 @@
 
         // Gọi backend
         const res = await axios.post(
-          'http://localhost:3000/auth/login-google',
+          `${API_URL}/login-google`,
           {
             tokenFromGoogle: credential,
           },
