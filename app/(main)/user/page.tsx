@@ -84,6 +84,7 @@ export default function User() {
     setLoading(true);
     const stored = localStorage.getItem("currentUser");
     if (!stored) {
+      alert("Lỗi đăng nhập")
       router.push("/login");
       return;
     }
@@ -92,6 +93,8 @@ export default function User() {
     const authId = userData.auth_id;
     let accessToken = userData.access_token;
     const refreshToken = userData.refresh_token;
+
+    alert(`${userData}`)
 
     const res = await fetch(`/api/profile/${authId}`, {
       headers: {
