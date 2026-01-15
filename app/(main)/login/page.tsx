@@ -1,6 +1,9 @@
   "use client"
   import React, { useState } from 'react';
   import { useRouter } from 'next/navigation'
+  import { GoogleOAuthProvider } from '@react-oauth/google';
+  import { GoogleLogin } from '@react-oauth/google';
+  import axios from 'axios';
 
   interface FormData {
     username: string;
@@ -58,11 +61,15 @@
   console.log('Status:', response.status);
 
   if (response.ok) {
-    const userData = {
-      ...data,
-    };
+    const old = JSON.parse(localStorage.getItem('currentUser') || '{}');
 
-    localStorage.setItem('currentUser', JSON.stringify(userData));
+    localStorage.setItem(
+      'currentUser',
+      JSON.stringify({
+        ...old,
+        ...data, // chỉ ghi đè auth_id, role
+      })
+    );
     console.log("Saved user:", localStorage.getItem('currentUser'));
 
     alert('Đăng nhập thành công!');
@@ -83,6 +90,38 @@
   setLoading(false);
 };
 
+    const handleSuccess = async (response: any) => {
+      try {
+        const { credential } = response;
+        if (!credential) return;
+
+        // Gọi backend
+        const res = await axios.post(
+          'http://localhost:3000/auth/login-google',
+          {
+            tokenFromGoogle: credential,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        const currentUser = res.data;
+
+        // Lưu localStorage
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        console.log("Saved user:", localStorage.getItem('currentUser'));
+
+        // Redirect sang /user
+        router.push('/user');
+      } catch (error: any) {
+        console.error('Login Google failed:', error?.response?.data || error);
+        // Có thể show toast / alert ở đây
+        alert("Dang nhap that bai")
+      }
+    };
 
     return (
       <div className="min-h-screen flex items-center justify-center p-4 relative bg-cover bg-center" style={{ backgroundImage: "url('/assets/br.jpg')" }}>
@@ -209,6 +248,15 @@
               <span className="text-base">⬅</span> Quay về trang chủ
             </button>
           </div>
+
+          <GoogleOAuthProvider clientId="977963570920-h0qat6jqr0j309m1326blhmu7516g0rj.apps.googleusercontent.com">
+            <GoogleLogin
+              onSuccess={handleSuccess}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />;
+          </GoogleOAuthProvider>
         </div>
       </div>
     );
