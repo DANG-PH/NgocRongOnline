@@ -131,8 +131,6 @@
             ...currentUser, // chỉ ghi đè auth_id, role
           })
         );
-
-        alert(`${localStorage.getItem('currentUser')}`)
       
         console.log("Saved user:", localStorage.getItem('currentUser'));
 
