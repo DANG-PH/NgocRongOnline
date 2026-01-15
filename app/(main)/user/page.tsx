@@ -94,8 +94,6 @@ export default function User() {
     let accessToken = userData.access_token;
     const refreshToken = userData.refresh_token;
 
-    alert(`${userData.access_token}`)
-
     const res = await fetch(`/api/profile/${authId}`, {
       headers: {
         "Content-Type": "application/json",
