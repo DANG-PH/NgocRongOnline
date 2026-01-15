@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-const API_URL = 'http://localhost:3000';
-const WS_URL = 'http://localhost:3000/ws-chat';
+const API_URL = 'https://chrysocarpous-adonis-multilobular.ngrok-free.dev';
+const WS_URL = 'https://chrysocarpous-adonis-multilobular.ngrok-free.dev/ws-chat';
 
 interface User {
   userId: number;
