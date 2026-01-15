@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-const API_URL = 'https://chrysocarpous-adonis-multilobular.ngrok-free.dev';
-const WS_URL = 'https://chrysocarpous-adonis-multilobular.ngrok-free.dev/ws-chat';
+const API_URL = 'https://accompanied-recommended-networks-drops.trycloudflare.com';
+const WS_URL = 'https://accompanied-recommended-networks-drops.trycloudflare.com/ws-chat';
 
 interface User {
   userId: number;
