@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://github.com/DANG-PH/NgocRongOnline/releases">
-    🚀 <strong>Tải Game</strong>
+    ⬇️ <strong>Tải Game</strong>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://ngocrongdark.com">
@@ -14,7 +14,15 @@
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://www.facebook.com/profile.php?id=61576541835732">
-    📣 <strong>Fanpage</strong>
+    📘 <strong>Fanpage</strong>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/DANG-PH/ngoc-rong-online">
+    🎮 <strong>Client</strong>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/DANG-PH/dragonboy-api-gateway">
+    ⚙️ <strong>Server</strong>
   </a>
 </p>
 
