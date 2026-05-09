@@ -18,11 +18,11 @@
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/DANG-PH/ngoc-rong-online">
-    🎮 <strong>Client</strong>
+    🎮 <strong>Source Client</strong>
   </a>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/DANG-PH/dragonboy-api-gateway">
-    ⚙️ <strong>Server</strong>
+    ⚙️ <strong>Source Server</strong>
   </a>
 </p>
 
